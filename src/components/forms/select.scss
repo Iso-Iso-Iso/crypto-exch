@@ -1,0 +1,45 @@
+.select {
+    background: $primary-color_light;
+    position: relative;
+    color: $contrast-primary-color;
+    border-radius: 15px;
+    &__value {
+        padding: 15px;
+        cursor: pointer;
+        @include flex(space-between);
+        :deep(svg) {
+            transform: rotate(90deg);
+            width: 10px;
+            height: 10px;
+        }
+    }
+    &__drop-menu {
+        padding: 10px 15px;
+        position: absolute;
+        top: calc(100% + 10px);
+        @include flex($flex-direction: column);
+        width: 100%;
+        background: $primary-color_light;
+        border-radius: 15px;
+        display: none;
+        &_active {
+            display: flex;
+        }
+        @media screen and(max-width:768px) {
+        }
+    }
+    :deep(input[type="radio"]) {
+        display: none;
+    }
+    &__item {
+        cursor: pointer;
+        margin-bottom: 10px;
+        width: 100%;
+        &:hover {
+            background: rgba(255, 255, 255, 0.075);
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

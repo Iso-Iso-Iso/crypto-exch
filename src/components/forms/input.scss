@@ -1,0 +1,31 @@
+.input {
+    :deep(input) {
+        background: $contrast-primary-color;
+        padding: 10px;
+        font-size: $text-fz;
+        color: $primary-color;
+        border-radius: 15px;
+        width: 100%;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
+        &[type="number"] {
+            -moz-appearance: textfield; /* Firefox */
+        }
+    }
+    &_dark {
+        :deep(input) {
+            background: $primary-color_light;
+            color: $contrast-primary-color;
+        }
+    }
+    &_text-center {
+        :deep(input) {
+            text-align: center;
+        }
+    }
+}

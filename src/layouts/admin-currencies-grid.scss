@@ -1,0 +1,121 @@
+.currency {
+    max-width: 870px;
+    width: 100%;
+    background: #1f2327;
+    border-radius: 20px;
+    padding: 60px 100px;
+    position: relative;
+    &__top {
+        max-width: 670px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ededed;
+        margin-bottom: 25px;
+    }
+    &__name {
+        font-size: 14px;
+        color: #f7f9ff;
+        opacity: 0.34;
+        text-transform: uppercase;
+    }
+    .currency-name {
+        flex-basis: 20%;
+    }
+    .rate {
+        flex-basis: 18%;
+    }
+    .is_base {
+        flex-basis: 12%;
+        text-align: right;
+    }
+    .buttons {
+        flex-basis: 22%;
+        text-align: right;
+    }
+    &__bottom {
+        width: 100%;
+    }
+    &__item {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 30px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #8a8a8a;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__rate,
+    &__currency-name {
+        color: #f7f9ff;
+        font-size: 14px;
+    }
+    &__currency-name {
+        text-transform: uppercase;
+    }
+    &__date {
+        color: #f7f9ff;
+        opacity: 0.4;
+        font-size: 14px;
+    }
+    &__is_base {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__pending,
+    &__completed,
+    &__canceled {
+        padding: 6px 10px;
+        border-radius: 24px;
+        font-size: 12px;
+    }
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        flex-basis: 21%;
+    }
+    &__accept,
+    &__decline {
+        width: 66px;
+        height: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        border-radius: 12px;
+    }
+    &__accept {
+        background: #24782c;
+    }
+    &__decline {
+        background: #662d29;
+    }
+    &__pending {
+        background: rgba(201, 153, 32, 0.15);
+        color: #c99920;
+    }
+    &__completed {
+        background: rgba(61, 202, 177, 0.15);
+        color: #3dcab1;
+    }
+    &__canceled {
+        background: rgba(241, 87, 87, 0.15);
+        color: #f15757;
+    }
+    @media screen and (max-width: 768px) {
+        .date {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        padding: 60px 50px;
+    }
+    @media screen and (max-width: 420px) {
+        padding: 20px 20px 60px 20px;
+    }
+}

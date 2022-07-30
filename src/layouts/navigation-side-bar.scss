@@ -1,0 +1,22 @@
+.side-bar {
+    background: $primary-color;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    @include transition;
+    border-radius: 0 30px 30px 0;
+    @media screen and(max-width:1350px) {
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: -100%;
+    }
+    &_active {
+        left: 0;
+    }
+}
+.padding {
+    padding: 30px;
+}

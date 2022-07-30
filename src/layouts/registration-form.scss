@@ -1,0 +1,111 @@
+.registration {
+    margin: 0 auto;
+    max-width: 620px;
+    width: 100%;
+    padding: 50px 80px 40px 80px;
+    background: rgba(0, 0, 0, 0.74);
+    backdrop-filter: blur(25px);
+    border-radius: 40px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border: 3px solid #5882c17d;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    &__title {
+        color: #fff;
+        font-size: 38px;
+        margin-bottom: 50px;
+        width: 100%;
+        text-align: center;
+    }
+    &__error {
+        color: red;
+        font-size: $text-fz;
+    }
+    &__label,
+    &__input,
+    &__password {
+        flex-basis: 100%;
+        width: 100%;
+    }
+    &__label {
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    &__input {
+        background: #ffffff;
+        border: 1px solid #bcbec0;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        padding: 15px 0 15px 20px;
+        &::-webkit-input-placeholder {
+            color: #bcbec0;
+            font-size: 14px;
+        }
+    }
+    &__password {
+        position: relative;
+    }
+    &__show-pass {
+        position: absolute;
+        right: 15px;
+        top: 18px;
+        width: 20px;
+        height: 20px;
+    }
+    &__sign-in {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 100%;
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 35px;
+        margin-bottom: 40px;
+        padding: 10px 0;
+        background: linear-gradient(90.93deg, #d52b7d 14.57%, #7c3eff 81.32%);
+        border-radius: 20px;
+        &:disabled {
+            background: $primary-color_light;
+            box-shadow: none;
+            cursor: auto;
+        }
+    }
+    &__text {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    &__socials {
+        flex-basis: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        @media screen and (max-width: 570px) {
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+    }
+    &__social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 135px;
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid #bcbec0;
+        border-radius: 10px;
+        padding: 10px 0;
+        @media screen and (max-width: 570px) {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 570px) {
+        padding: 30px 40px;
+    }
+}

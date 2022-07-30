@@ -1,0 +1,17 @@
+.button.button {
+    padding: 10px;
+    width: 100%;
+    color: $primary-color;
+    font-size: 15px;
+    font-weight: $subtitle-fw;
+    background: linear-gradient(91.44deg, #d800a8 17.68%, #ff007a 88.87%);
+    :deep(path) {
+        fill: $primary-color;
+    }
+}
+.button {
+    &:disabled {
+        cursor: auto;
+        background: $primary-color_light;
+    }
+}

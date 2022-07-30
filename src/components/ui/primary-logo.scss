@@ -1,0 +1,13 @@
+.logo {
+    @include flex;
+    font-family: $logo-ff;
+    font-size: $logo-fz;
+    color: $contrast-primary-color;
+    :deep(svg) {
+        width: 30px;
+        height: 30px;
+    }
+    :deep(.icon) {
+        margin-right: 10px;
+    }
+}

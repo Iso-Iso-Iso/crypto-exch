@@ -1,0 +1,34 @@
+.info-card {
+    &__header {
+        margin-bottom: 25px;
+    }
+
+    &__info-wrapper {
+    }
+
+    &__item {
+        margin-bottom: 20px;
+        @include flex(flex-start);
+        .icon {
+            margin-right: 10px;
+        }
+    }
+
+    &__key {
+        color: $contrast-primary-color;
+        opacity: 0.5;
+        margin-right: 15px;
+        font-size: $text-fz;
+    }
+
+    &__value {
+        font-size: $text-fz;
+        color: $contrast-primary-color;
+    }
+}
+.flex-space {
+}
+.title {
+}
+.button {
+}

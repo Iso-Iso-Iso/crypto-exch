@@ -1,0 +1,32 @@
+.transaction-card {
+    &__payment-card {
+        transform: translateY(-35%);
+    }
+    .title {
+        font-size: 20px;
+    }
+    &__method {
+        color: $contrast-primary-color;
+        width: 50%;
+        @include flex;
+        padding: 15px 50px;
+        border-radius: 15px;
+        font-size: $text-fz;
+        font-weight: $subtitle-fw;
+        &_active {
+            background: $contrast-primary-color;
+            color: $primary-color !important;
+        }
+    }
+    &__method-wrapper {
+        background: $primary-color_light;
+        border-radius: 15px;
+        padding: 5px;
+    }
+    &__select-wrapper {
+        flex: 1 1 100%;
+        &:first-child {
+            margin-right: 15px;
+        }
+    }
+}

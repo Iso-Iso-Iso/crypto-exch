@@ -1,0 +1,120 @@
+.swap {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 150px 60px;
+    background: #0d0d0d;
+    border-radius: 20px;
+    @media screen and(max-width:768px) {
+        padding: 30px 20px;
+    }
+    .input-thumbnail {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    &__title {
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 15px;
+    }
+    &__sub-title {
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+    &__first-currency,
+    &__second-currency {
+        max-width: 300px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+    }
+    &__second-currency {
+        margin-bottom: 40px;
+    }
+    &__label {
+        color: #fff;
+        position: absolute;
+        left: 14px;
+        top: 12px;
+    }
+    &__input {
+        background: #1d1d1d;
+        border-radius: 15px;
+        width: 100%;
+        padding: 12px 50px 13px 27px;
+        color: #fff;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        &::-webkit-input-placeholder {
+            color: #b0a9a9;
+        }
+    }
+    &__coin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        right: 25px;
+        top: 8px;
+        padding-left: 12px;
+        border-left: 1px solid #363434;
+        cursor: pointer;
+        svg {
+            margin-bottom: 2px;
+            border-radius: 20px;
+        }
+        &-name {
+            font-size: 10px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+    }
+    &__currency {
+        position: absolute;
+        display: flex;
+        bottom: -15px;
+        left: 15px;
+        p {
+            font-size: 10px;
+            color: #fff;
+            &:first-child {
+                margin-right: 5px;
+            }
+        }
+    }
+    &__arrow {
+        position: absolute;
+        right: -15px;
+        top: 13px;
+    }
+    &__svg {
+        margin-bottom: 15px;
+    }
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 320px;
+        width: 100%;
+        color: #0d0d0d;
+        font-size: 20px;
+        padding: 10px 0;
+        background: linear-gradient(91.44deg, #002fd8 17.68%, #ff007a 88.87%);
+        box-shadow: 0px 8px 20px rgba(253, 0, 124, 0.25);
+        border-radius: 15px;
+        svg {
+            margin-right: 7px;
+        }
+        &:disabled {
+            background: $primary-color_light;
+            box-shadow: none;
+            cursor: auto;
+        }
+    }
+}

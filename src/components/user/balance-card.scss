@@ -1,0 +1,47 @@
+.balance-card {
+    &__title {
+    }
+
+    &__balance {
+        font-size: $primary-title-fz;
+        color: $contrast-primary-color;
+        font-weight: $title-fw;
+        margin-bottom: 30px;
+        padding-left: 10px;
+    }
+    &__header {
+        margin-bottom: 20px;
+    }
+    &__button {
+        &:first-child {
+            margin-right: 10px;
+        }
+    }
+    &__valut-course {
+        @include flex(flex-end);
+
+        .standart-text {
+            span {
+                margin-right: 5px;
+            }
+            @include flex;
+            width: max-content;
+        }
+    }
+    &__valut-symbol {
+        @include flex;
+        background: #00c120;
+        padding: 5px 10px;
+        margin-left: 10px;
+        border-radius: 5px;
+        color: $primary-color !important;
+        &_red {
+            background: #ff1a1a;
+        }
+    }
+}
+
+.title {
+}
+.flex-center {
+}
