@@ -4,7 +4,7 @@ import usdtFlag from "@assets/usdt-flag.png";
 import ukrFlag from "@assets/ukr-flag.png";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import { swapBalance, getCurrencies } from "@services/user";
 import useAsyncQuery from "@composables/useAsyncQuery";
 import { useStore } from "vuex";
@@ -12,16 +12,18 @@ import ErrorText from "@components/ui/error-text.vue";
 import useSwap from "@composables/useSwap";
 import IconPlane from "../icons/icon-plane.vue";
 import Button from "../ui/button.vue";
+import AlertToast from "../ui/alert-toast.vue";
 // TODO! use composables
 
 const store = useStore();
 const isUserLoading = computed(() => store.state.user.isLoading);
 const isUserError = computed(() => store.state.user.isError);
 
-const { doAsyncQuery, isLoading: isSwaping } = useAsyncQuery(
-    swapBalance,
-    (res: any) => store.commit("setUser", res.data)
-);
+const {
+    doAsyncQuery,
+    isLoading: isSwaping,
+    isSuccess,
+} = useAsyncQuery(swapBalance, (res: any) => store.commit("setUser", res.data));
 
 const currencies = computed(() => store.state.currencies.data);
 const isCurrenciesLoading = computed(() => store.state.currencies.isLoading);
@@ -49,9 +51,14 @@ function onSwap() {
     doAsyncQuery([swapConfig]);
 }
 const isAvailableForSwap = computed(() => swapConfig.sum > 0);
+const isToastShow = ref(false);
+watch(isSuccess, (v) => (isToastShow.value = v));
 </script>
 <template>
     <div class="swap">
+        <AlertToast v-model="isToastShow"
+            >Swap was successfully done</AlertToast
+        >
         <h2 class="swap__title">Swap</h2>
         <h3 class="swap__sub-title">Amount</h3>
         <InputThumbnail

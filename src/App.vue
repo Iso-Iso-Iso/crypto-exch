@@ -5,9 +5,6 @@ import HeaderMobile from "@components/navigation/header-mobile.vue";
 import LoginPopup from "@layouts/login-popup.vue";
 import { useStore } from "vuex";
 
-// import { loginUser } from "@/services/auth";
-// const a = { login: "admin", password: "qwerty123" };
-// loginUser(a).then((res) => console.log(res));
 const store = useStore();
 
 // store.dispatch("userLogin", a);

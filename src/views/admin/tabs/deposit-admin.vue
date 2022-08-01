@@ -26,7 +26,7 @@ async function onDecline(deposit_id: number, index: number) {
     if (!isDepositSuccess) return;
     response.value.data.deposits[index].status = -1;
 }
-watch(response, (v) => console.log(v));
+
 </script>
 <template>
     <DepositAdminGrid>

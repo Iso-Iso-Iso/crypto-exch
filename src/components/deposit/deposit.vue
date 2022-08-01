@@ -11,6 +11,7 @@ import ErrorText from "@components/ui/error-text.vue";
 import SuccessText from "@components/ui/success-text.vue";
 import Button from "../ui/button.vue";
 import IconPlane from "../icons/icon-plane.vue";
+import AlertToast from "../ui/alert-toast.vue";
 
 const addTextToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -42,9 +43,14 @@ const isAvailableForSwap = computed(() => {
 
     return isAvailableForSwap;
 });
+const isToastShow = ref(false);
+watch(isSuccess, (v) => (isToastShow.value = v));
 </script>
 <template>
     <div class="deposit">
+        <AlertToast v-model="isToastShow"
+            >Payment was successfully added to order</AlertToast
+        >
         <h2 class="deposit__title text-center">Depoist</h2>
         <h3 class="deposit__sub-title">Your crypto wallet*</h3>
         <Input v-model="depositConfig.crypto_id" class="mb-small" dark />
@@ -118,10 +124,8 @@ const isAvailableForSwap = computed(() => {
             </svg>
             Payment done!
         </button>
-        <SuccessText v-if="isSuccess"
-            >Your deposit was added to order. Pleas wait.
-        </SuccessText>
-        <ErrorText v-else-if="isError"
+
+        <ErrorText v-if="isError"
             >Payment error. Please try again later</ErrorText
         >
     </div>

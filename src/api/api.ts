@@ -32,7 +32,7 @@ $api.interceptors.response.use(
                 $api.request(requestConfig);
             }
         } catch (err) {
-            console.log(err, "^_^");
+            console.log(err);
             throw err;
         }
         throw err;

@@ -6,13 +6,14 @@ import Select from "@components/forms/select.vue";
 import InputThumbnail from "@/components/forms/input-thumbnail.vue";
 import Button from "@components/ui/button.vue";
 import IconPlane from "@components/icons/icon-plane.vue";
-import { computed, reactive, watch } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import ukrFlag from "@assets/ukr-flag.png";
 import { useStore } from "vuex";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 import ErrorText from "@components/ui/error-text.vue";
 import useAsyncQuery from "@composables/useAsyncQuery";
 import { createWithdraw } from "@services/user";
+import AlertToast from "../ui/alert-toast.vue";
 
 const store = useStore();
 const isUserLoading = computed(() => store.state.user.isLoading);
@@ -28,28 +29,42 @@ const withdrawConfig = reactive({
     sum: 0,
 });
 
-const { doAsyncQuery } = useAsyncQuery(createWithdraw);
+const { doAsyncQuery, isSuccess, errorResponse, isError } =
+    useAsyncQuery(createWithdraw);
 
 function onWithdraw() {
-    doAsyncQuery([withdrawConfig]).then((res) => console.log(res));
+    doAsyncQuery([withdrawConfig]);
 }
 
 const totalSum = computed(() => {
     if (isCurrenciesSuccess.value)
-        return withdrawConfig.sum * currencies?.value?.currencies?.USD || 0 - 5;
+        return (
+            withdrawConfig.sum * (currencies?.value?.currencies?.USD || 0) - 5
+        );
     return 0;
 });
 
 const isButtonDisabled = computed(() => {
     const isUserDataEnter =
         withdrawConfig.bank_id.length > 12 && totalSum.value > 0;
-    console.log(isUserDataEnter);
 
     return isUserDataEnter;
 });
+
+const isToastShow = ref(false);
+watch(isSuccess, (v) => (isToastShow.value = v));
+
+const isErrorToastShow = ref(false);
+watch(isError, (v) => (isErrorToastShow.value = v));
 </script>
 <template>
     <ContentCard class="transaction-card">
+        <AlertToast v-model="isToastShow"
+            >Transaction was successfully added to order</AlertToast
+        >
+        <AlertToast v-model="isErrorToastShow" error
+            >Somthing went wrong! Check the correctness of filling in the data
+        </AlertToast>
         <div class="flex-center">
             <PaymentCard class="transaction-card__payment-card" />
         </div>
