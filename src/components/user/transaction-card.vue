@@ -91,7 +91,7 @@ watch(isError, (v) => (isErrorToastShow.value = v));
             dark
             placeholder="0213 - 1413 - 2242 - 5735 - 4634 - 3655"
             text-center
-            type="text"
+            type="number"
         />
         <p class="standart-text standart-text_under flex-center mb-big">
             Please enter the Wallet ID or Destination email
