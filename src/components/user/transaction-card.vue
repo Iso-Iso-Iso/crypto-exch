@@ -45,6 +45,8 @@ const totalSum = computed(() => {
 });
 
 const isButtonDisabled = computed(() => {
+    console.log(withdrawConfig.bank_id);
+
     const isUserDataEnter =
         withdrawConfig.bank_id.length > 12 && totalSum.value > 0;
 
@@ -84,12 +86,12 @@ watch(isError, (v) => (isErrorToastShow.value = v));
         </div>
         <p class="standart-text mb-small">Pay to</p>
         <Input
-            v-model="withdrawConfig.bank_id"
+            v-model.trim="withdrawConfig.bank_id"
             class="mb-small"
             dark
             placeholder="0213 - 1413 - 2242 - 5735 - 4634 - 3655"
             text-center
-            type="number"
+            type="text"
         />
         <p class="standart-text standart-text_under flex-center mb-big">
             Please enter the Wallet ID or Destination email
