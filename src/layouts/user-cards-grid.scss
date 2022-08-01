@@ -10,12 +10,13 @@
     min-height: 100vh;
     flex: 1 1 auto;
     @media screen and(max-width:1210px) {
-        padding: 50px 20px 10px;
+        padding: 30px 20px 10px;
         @include flex(center, stretch, $flex-direction: column);
         width: 50%;
     }
     @media screen and(max-width:800px) {
         width: 100%;
+        gap: 0;
     }
     @media screen and(max-width:510px) {
         justify-content: flex-start;
