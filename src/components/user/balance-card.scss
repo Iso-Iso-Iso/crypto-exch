@@ -1,5 +1,15 @@
 .balance-card {
+    @media screen and(max-width:768px) {
+        width: 70%;
+        margin: 0 auto;
+    }
+    @media screen and(max-width:500px) {
+        width: 265px;
+    }
     &__title {
+        @media screen and(max-width:510px) {
+            font-size: 18px;
+        }
     }
 
     &__balance {
@@ -8,9 +18,16 @@
         font-weight: $title-fw;
         margin-bottom: 30px;
         padding-left: 10px;
+        @media screen and(max-width:510px) {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
     }
     &__header {
-        margin-bottom: 20px;
+        margin-bottom: 35px;
+        @media screen and(max-width:510px) {
+            margin-bottom: 15px;
+        }
     }
     &__button {
         &:first-child {
@@ -21,8 +38,14 @@
         @include flex(flex-end);
 
         .standart-text {
+            @media screen and(max-width:510px) {
+                font-size: 10px;
+            }
             span {
                 margin-right: 5px;
+                @media screen and(max-width:510px) {
+                    font-size: 10px;
+                }
             }
             @include flex;
             width: max-content;
@@ -37,6 +60,9 @@
         color: $primary-color !important;
         &_red {
             background: #ff1a1a;
+        }
+        @media screen and(max-width:510px) {
+            padding: 2px 5px;
         }
     }
 }

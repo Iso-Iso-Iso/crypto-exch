@@ -3,6 +3,8 @@ import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import useHideLogin from "@composables/useHideLogin";
 import useUserLogin from "@composables/useUserLogin";
+import ErrorText from "@/components/ui/error-text.vue";
+import LoadSpinner from "@/components/ui/load-spinner.vue";
 useHideLogin();
 const store = useStore();
 const onSuccessLogin = () => {
@@ -13,7 +15,7 @@ const onSuccessLogin = () => {
 const isLoginPopupActive = computed(
     () => store.state.styles.isLoginPopupActive
 );
-const { loginUser } = useUserLogin();
+const { loginUser, isError, isLoading, isSuccess } = useUserLogin();
 
 const isShowPassword = ref(false);
 
@@ -88,8 +90,14 @@ const userConfig = reactive({
                     </svg>
                 </div>
             </div>
+            <ErrorText v-if="isError" class="mb-small"
+                >Username or password is incorrect</ErrorText
+            >
             <!-- <a href="" class="login__forgot">Forgot Password?</a> -->
+
+            <LoadSpinner v-if="isLoading" class="mb-small"></LoadSpinner>
             <button
+                v-show="(isError || !isSuccess) && !isLoading"
                 class="login__sign-in"
                 @click="() => loginUser(userConfig, onSuccessLogin)"
             >

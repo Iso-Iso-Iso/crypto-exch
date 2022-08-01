@@ -1,15 +1,25 @@
 .user-cards-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 200px);
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(420px, 530px));
+    justify-content: center;
+    width: 100%;
+    grid-template-rows: repeat(3, 220px);
+    gap: 50px;
     padding: 0 50px;
     align-content: center;
     min-height: 100vh;
     flex: 1 1 auto;
     @media screen and(max-width:1210px) {
-        padding: 20px;
+        padding: 50px 20px 10px;
         @include flex(center, stretch, $flex-direction: column);
+        width: 50%;
+    }
+    @media screen and(max-width:800px) {
+        width: 100%;
+    }
+    @media screen and(max-width:510px) {
+        justify-content: flex-start;
+        min-height: auto;
     }
 }
 .balance-card {

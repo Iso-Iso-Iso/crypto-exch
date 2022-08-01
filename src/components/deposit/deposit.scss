@@ -50,6 +50,9 @@
         // padding: 8px;
         border-right: 2px solid #565656;
         @include flex;
+        @media screen and(max-width:768px) {
+            max-width: 50px;
+        }
     }
     &__input {
         // background: #1d1d1d;

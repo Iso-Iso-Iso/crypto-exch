@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomePage from "@views/home-page.vue";
 import DepositPage from "@views/deposit-page.vue";
 import SwapPage from "@views/swap-page.vue";
+
 const NotFound = () => import("@views/not-found.vue");
 const AdminHomePage = () => import("@views/admin/home-page.vue");
 const DepositAdmin = () => import("@views/admin/tabs/deposit-admin.vue");

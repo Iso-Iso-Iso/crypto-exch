@@ -32,7 +32,12 @@
     &__currency {
         @include flex($flex-direction: column);
     }
-
+    &__line {
+        background: #363434;
+        height: 30px;
+        width: 2px;
+        margin-right: 10px;
+    }
     &__flag {
         width: 15px;
         height: 15px;

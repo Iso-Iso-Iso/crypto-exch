@@ -9,6 +9,8 @@ import LoadSpinner from "@components/ui/load-spinner.vue";
 import useUserProgressState from "@composables/useUserProgressState";
 import ErrorText from "@components/ui/error-text.vue";
 import SuccessText from "@components/ui/success-text.vue";
+import Button from "../ui/button.vue";
+import IconPlane from "../icons/icon-plane.vue";
 
 const addTextToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -89,9 +91,13 @@ const isAvailableForSwap = computed(() => {
             network, the transaction will burn on the blockchain
         </p>
         <LoadSpinner v-if="isLoading || isUserLoading"></LoadSpinner>
-        <ErrorText v-else-if="isUserError"
-            >You must be registered for make deposit</ErrorText
+        <RouterLink
+            v-else-if="isUserError"
+            :to="{ name: 'user-registration' }"
+            class="w-100"
         >
+            <Button> <IconPlane class="mr-small" /> Register now</Button>
+        </RouterLink>
         <button
             v-else
             class="deposit__button mb-small"

@@ -10,6 +10,8 @@ import useAsyncQuery from "@composables/useAsyncQuery";
 import { useStore } from "vuex";
 import ErrorText from "@components/ui/error-text.vue";
 import useSwap from "@composables/useSwap";
+import IconPlane from "../icons/icon-plane.vue";
+import Button from "../ui/button.vue";
 // TODO! use composables
 
 const store = useStore();
@@ -108,9 +110,14 @@ const isAvailableForSwap = computed(() => swapConfig.sum > 0);
             >$</InputThumbnail
         >
         <LoadSpinner v-if="isCurrenciesLoading || isUserLoading || isSwaping" />
-        <ErrorText v-else-if="isUserError">
-            You must be reisted for swaping the currency
-        </ErrorText>
+        <RouterLink
+            v-else-if="isUserError"
+            :to="{ name: 'user-registration' }"
+            class="w-100"
+        >
+            <Button> <IconPlane class="mr-small" /> Register now </Button>
+        </RouterLink>
+
         <button
             v-else
             :disabled="!isAvailableForSwap"

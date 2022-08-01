@@ -13,14 +13,17 @@ import Deposit from "@components/deposit/deposit.vue";
     flex: 1 1 auto;
     width: 50%;
     @include flex($flex-direction: column);
-    :deep(.balance-card) {
-        max-width: 600px;
-        width: 100%;
-        margin-bottom: 30px;
-    }
+
     @media screen and(max-width:1350px) {
         padding: 0 10px;
         width: 100%;
+    }
+    @media screen and(min-width:769px) {
+        :deep(.balance-card) {
+            max-width: 380px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
     }
 }
 </style>

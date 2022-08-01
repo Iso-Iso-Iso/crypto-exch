@@ -100,7 +100,7 @@ const isButtonDisabled = computed(() => {
                 />
             </div>
         </div>
-        <div class="flex-space mb-small">
+        <div class="flex-space transaction-card__commission">
             <div class="transaction-card__select-wrapper">
                 <p class="standart-tex">Commission $5</p>
             </div>
@@ -108,10 +108,12 @@ const isButtonDisabled = computed(() => {
                 <p class="standart-tex">Total {{ totalSum.toFixed(2) }}$</p>
             </div>
         </div>
+
         <LoadSpinner v-if="isUserLoading || isCurrenciesLoading"></LoadSpinner>
-        <ErrorText v-else-if="isUserError">
-            You must be reisted for make transactions
-        </ErrorText>
+        <RouterLink v-else-if="isUserError" :to="{ name: 'user-registration' }">
+            <Button> <IconPlane class="mr-small" /> Register now </Button>
+        </RouterLink>
+
         <Button v-else :disabled="!isButtonDisabled" @click="onWithdraw()"
             ><IconPlane class="mr-small" /> Send</Button
         >

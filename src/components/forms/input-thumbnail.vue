@@ -30,6 +30,7 @@ const { modelValue, type, placeholder, src } = toRefs(props);
                     $emit('inputChange')
             "
         />
+        <hr class="input-thumbnail__line" />
         <div class="input-thumbnail__currency">
             <div v-show="src" class="input-thumbnail__flag">
                 <img :src="src" alt="" />

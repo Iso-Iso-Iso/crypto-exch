@@ -1,6 +1,10 @@
 .transaction-card {
     &__payment-card {
         transform: translateY(-35%);
+        margin-bottom: 10px;
+        @media screen and(max-width:768px) {
+            display: none;
+        }
     }
     .title {
         font-size: 20px;
@@ -27,6 +31,28 @@
         flex: 1 1 100%;
         &:first-child {
             margin-right: 15px;
+        }
+    }
+    .mb-big {
+        margin-bottom: 55px;
+    }
+    .mb-medium {
+        margin-bottom: 30px;
+    }
+    &__commission {
+        margin-bottom: 70px;
+    }
+    @media screen and(max-width:768px) {
+        background: transparent !important;
+        padding: 0 !important;
+        .mb-big {
+            margin-bottom: 35px;
+        }
+        .mb-medium {
+            margin-bottom: 20px;
+        }
+        &__commission {
+            margin-bottom: 30px;
         }
     }
 }

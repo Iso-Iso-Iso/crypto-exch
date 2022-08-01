@@ -10,13 +10,13 @@ const isDoubleAuthActive = ref(false);
 </script>
 <template>
     <ContentCard class="security-card">
-        <div class="security-card__headers flex-space mb-medium">
+        <div class="security-card__headers flex-space mb-big">
             <h2 class="title">Security</h2>
             <button>
                 <IconDots />
             </button>
         </div>
-        <div class="flex-space mb-small">
+        <div class="flex-space security-card__auth">
             <div class="flex-center">
                 <button
                     :class="{ button_active: isDoubleAuthActive }"

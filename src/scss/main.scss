@@ -32,6 +32,9 @@
             flex-direction: column;
         }
     }
+    @media screen and(max-width:768px) {
+        background: #221e1e;
+    }
 }
 html,
 body {
@@ -151,4 +154,8 @@ html {
             text-decoration: underline;
         }
     }
+}
+
+.w-100 {
+    width: 100%;
 }
