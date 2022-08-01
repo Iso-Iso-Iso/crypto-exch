@@ -91,6 +91,7 @@ const isAvailableForSwap = computed(() => swapConfig.sum > 0);
         </button>
         <InputThumbnail
             v-if="!isValueSwaped"
+            class="swap__input-last"
             v-model.number="convertedSum"
             dark
             valut="UAH"
@@ -101,6 +102,7 @@ const isAvailableForSwap = computed(() => swapConfig.sum > 0);
         >
         <InputThumbnail
             v-else
+            class="swap__input-last"
             v-model.number="convertedSum"
             dark
             valut="USDT"

@@ -20,13 +20,25 @@
     &__title {
         color: #fff;
         font-size: 38px;
-        margin-bottom: 50px;
+        margin-bottom: 25px;
     }
     &__label,
     &__input,
     &__password {
         flex-basis: 100%;
         width: 100%;
+    }
+    &__close {
+        width: 100%;
+        cursor: pointer;
+        @include flex(flex-end);
+        :deep(svg) {
+            width: 25px;
+            height: 25px;
+        }
+        :deep(path) {
+            fill: white;
+        }
     }
     &__label {
         color: #fff;
@@ -130,15 +142,15 @@
         padding: 30px 40px;
     }
 }
-.popup-enter-from {
-    top: 80%;
-    opacity: 0;
-}
-.popup-leave-to {
-    top: 80%;
-    opacity: 0;
-}
-.popup-enter-active,
-.popup-leave-active {
-    @include transition($time-function: ease-in-out);
-}
+// .popup-enter-from {
+//     top: 80%;
+//     opacity: 0;
+// }
+// .popup-leave-to {
+//     top: 80%;
+//     opacity: 0;
+// }
+// .popup-enter-active,
+// .popup-leave-active {
+//     @include transition($time-function: ease-in-out);
+// }
