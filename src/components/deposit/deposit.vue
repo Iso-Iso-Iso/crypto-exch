@@ -8,10 +8,12 @@ import Input from "@components/forms/input.vue";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 import useUserProgressState from "@composables/useUserProgressState";
 import ErrorText from "@components/ui/error-text.vue";
-import SuccessText from "@components/ui/success-text.vue";
+
 import Button from "../ui/button.vue";
 import IconPlane from "../icons/icon-plane.vue";
 import AlertToast from "../ui/alert-toast.vue";
+import { useStore } from "vuex";
+import TextLoadPlaceholder from "../ui/text-load-placeholder.vue";
 
 const addTextToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -19,6 +21,13 @@ const addTextToClipboard = (text: string) => {
 };
 
 const { isUserError, isUserLoading } = useUserProgressState();
+const store = useStore();
+
+const isSettingsLoading = computed(() => store.state.settings.isLoading);
+const isSettingsError = computed(() => store.state.settings.isError);
+const cardNumberForDeposit = computed(
+    () => store.state.settings?.data?.crypto_wallet_id
+);
 
 const depositConfig = reactive({
     sum: 0,
@@ -34,7 +43,7 @@ function onCreateDeposit() {
     if (depositConfig.sum == 0) return;
     doAsyncQuery([depositConfig]);
 }
-const cardNumberForDeposit = ref("TENmG7atCyVogAkWr6NWNbZ");
+
 const commission = computed(() => ((depositConfig.sum / 100) * 2).toFixed(2));
 
 const isAvailableForSwap = computed(() => {
@@ -50,6 +59,9 @@ watch(isSuccess, (v) => (isToastShow.value = v));
     <div class="deposit">
         <AlertToast v-model="isToastShow"
             >Payment was successfully added to order</AlertToast
+        >
+        <AlertToast v-model="isSettingsError" error>
+            Wallet id is not loaded, try to refresh the page</AlertToast
         >
         <h2 class="deposit__title text-center">Depoist</h2>
         <h3 class="deposit__sub-title">Your crypto wallet*</h3>
@@ -71,7 +83,9 @@ watch(isSuccess, (v) => (isToastShow.value = v));
         <div class="deposit__wallet">
             <label for="wallet" class="deposit__label">Trc-20</label>
             <p type="text" name="wallet" class="deposit__input">
-                {{ cardNumberForDeposit }}
+                <TextLoadPlaceholder :loading="isSettingsLoading">
+                    {{ cardNumberForDeposit }}
+                </TextLoadPlaceholder>
             </p>
             <div
                 class="deposit__copy"

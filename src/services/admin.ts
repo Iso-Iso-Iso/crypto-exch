@@ -32,3 +32,7 @@ export async function updateDepositStatus(params: AxiosParamsArray = []) {
 export async function updateWithdrawStatus(params: AxiosParamsArray = []) {
     return $api.patch("/admin/withdraw/update", ...params);
 }
+export async function updateSettings(params: AxiosParamsArray = []) {
+    return $api.patch("/admin/settings/change", ...params);
+}
+//

@@ -20,7 +20,10 @@ const isUserLoading = computed(() => store.state.user.isLoading);
             <AdminLink class="mr-small" :to="{ name: 'admin.transaction' }"
                 >Выводы</AdminLink
             >
-            <AdminLink :to="{ name: 'admin.currencies' }">Валюты</AdminLink>
+            <AdminLink class="mr-small" :to="{ name: 'admin.currencies' }"
+                >Валюты</AdminLink
+            >
+            <AdminLink :to="{ name: 'admin.settings' }">Настройки</AdminLink>
         </ContentCard>
         <div v-if="isUserLoading">Loading...</div>
         <RouterView v-else-if="isUserHaveAdminAccess"></RouterView>

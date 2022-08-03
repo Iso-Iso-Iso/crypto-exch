@@ -11,6 +11,7 @@ const TransactionAdmin = () =>
 const UserNotification = () => import("@views/user-notification.vue");
 const UserRegistration = () => import("@views/user-registration.vue");
 const CurrenciesAdmin = () => import("@views/admin/tabs/currencies-admin.vue");
+const SettingsAdmin = () => import("@views/admin/tabs/settings-admin.vue");
 
 const routes: RouteRecordRaw[] = [
     { path: "/", component: HomePage, name: "home-page" },
@@ -31,6 +32,11 @@ const routes: RouteRecordRaw[] = [
                 path: "currencies",
                 name: "admin.currencies",
                 component: CurrenciesAdmin,
+            },
+            {
+                path: "settings",
+                name: "admin.settings",
+                component: SettingsAdmin,
             },
         ],
     },

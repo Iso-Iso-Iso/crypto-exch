@@ -10,6 +10,7 @@ const store = useStore();
 // store.dispatch("userLogin", a);
 store.dispatch("getUser");
 store.dispatch("fetchCurrencies");
+store.dispatch("fetchSettings");
 </script>
 
 <template>
