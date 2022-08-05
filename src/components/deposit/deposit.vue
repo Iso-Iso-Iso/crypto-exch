@@ -44,13 +44,10 @@ function onCreateDeposit() {
     doAsyncQuery([depositConfig]);
 }
 
-const commission = computed(() => ((depositConfig.sum / 100) * 2).toFixed(2));
-
+const commission = computed(() => (depositConfig.sum / 100) * 2);
+const totalSum = computed(() => depositConfig.sum - commission.value);
 const isAvailableForSwap = computed(() => {
-    const isAvailableForSwap =
-        depositConfig.sum > 0 && depositConfig.crypto_id.length > 6;
-
-    return isAvailableForSwap;
+    return depositConfig.sum > 0;
 });
 const isToastShow = ref(false);
 watch(isSuccess, (v) => (isToastShow.value = v));
@@ -66,9 +63,8 @@ const isPaymentTime = ref(false);
             Wallet id is not loaded, try to refresh the page</AlertToast
         >
         <h2 class="deposit__title text-center">Depoist</h2>
-        <h3 class="deposit__sub-title">Your crypto wallet*</h3>
+
         <div v-if="!isPaymentTime" class="deposit__input-wrapper">
-            <Input v-model="depositConfig.crypto_id" class="mb-small" dark />
             <h3 class="deposit__sub-title">Amount*</h3>
             <InputThumbnail
                 v-model="depositConfig.sum"
@@ -81,10 +77,11 @@ const isPaymentTime = ref(false);
             >
             <div class="deposit__currency mb-small">
                 <p>Commission</p>
-                <p>${{ commission }}</p>
+                <p>${{ commission.toFixed(2) }}</p>
             </div>
         </div>
         <div v-else>
+            <h3 class="deposit__sub-title">Deposit sum: {{ totalSum }}$</h3>
             <div class="deposit__wallet">
                 <label for="wallet" class="deposit__label">Trc-20</label>
                 <p type="text" name="wallet" class="deposit__input">

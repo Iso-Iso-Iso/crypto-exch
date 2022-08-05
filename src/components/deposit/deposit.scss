@@ -1,12 +1,12 @@
 .deposit {
     @include flex(center, flex-start, $flex-direction: column);
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
 
     background: $primary-color;
     border-radius: 20px;
 
-    padding: 20px 150px 30px;
+    padding: 20px 50px 30px;
     @media screen and(max-width:768px) {
         padding: 30px 20px;
     }
