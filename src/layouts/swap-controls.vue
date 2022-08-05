@@ -25,5 +25,10 @@ import Swap from "@components/swap/swap.vue";
             margin-bottom: 30px;
         }
     }
+    @media screen and(max-width:425px) {
+        :deep(.balance-card) {
+            margin-bottom: 60px;
+        }
+    }
 }
 </style>

@@ -12,6 +12,9 @@
             width: 10px;
             height: 10px;
         }
+        @media screen and(max-width:425px) {
+            padding: 10px;
+        }
     }
     &__drop-menu {
         padding: 10px 15px;

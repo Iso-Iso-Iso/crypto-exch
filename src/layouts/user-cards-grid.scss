@@ -22,6 +22,9 @@
         justify-content: flex-start;
         min-height: auto;
     }
+    @media screen and(max-width:425px) {
+        padding: 20px 30px;
+    }
 }
 .balance-card {
     grid-area: 1 / 1 / 2 / 2;

@@ -21,6 +21,9 @@
             background: $contrast-primary-color;
             color: $primary-color !important;
         }
+        @media screen and(max-width:425px) {
+            padding: 10px 30px;
+        }
     }
     &__method-wrapper {
         background: $primary-color_light;

@@ -12,6 +12,7 @@ import Deposit from "@components/deposit/deposit.vue";
 .swap-controls {
     flex: 1 1 auto;
     width: 50%;
+    margin-bottom: 30px;
     @include flex($flex-direction: column);
 
     @media screen and(max-width:1350px) {
@@ -24,6 +25,13 @@ import Deposit from "@components/deposit/deposit.vue";
             width: 100%;
             margin-bottom: 30px;
         }
+    }
+    @media screen and(max-width:425px) {
+        :deep(.balance-card) {
+            margin-bottom: 60px;
+        }
+        padding: 60px 10px 0;
+        justify-content: flex-start;
     }
 }
 </style>
