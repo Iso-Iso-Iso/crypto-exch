@@ -54,6 +54,8 @@ const isAvailableForSwap = computed(() => {
 });
 const isToastShow = ref(false);
 watch(isSuccess, (v) => (isToastShow.value = v));
+
+const isPaymentTime = ref(false);
 </script>
 <template>
     <div class="deposit">
@@ -65,51 +67,55 @@ watch(isSuccess, (v) => (isToastShow.value = v));
         >
         <h2 class="deposit__title text-center">Depoist</h2>
         <h3 class="deposit__sub-title">Your crypto wallet*</h3>
-        <Input v-model="depositConfig.crypto_id" class="mb-small" dark />
-        <h3 class="deposit__sub-title">Amount*</h3>
-        <InputThumbnail
-            v-model="depositConfig.sum"
-            class="mb-small"
-            type="number"
-            valut="USDT"
-            :src="usdtFlag"
-            dark
-            >$</InputThumbnail
-        >
-        <div class="deposit__currency mb-small">
-            <p>Commission</p>
-            <p>${{ commission }}</p>
-        </div>
-        <div class="deposit__wallet">
-            <label for="wallet" class="deposit__label">Trc-20</label>
-            <p type="text" name="wallet" class="deposit__input">
-                <TextLoadPlaceholder :loading="isSettingsLoading">
-                    {{ cardNumberForDeposit }}
-                </TextLoadPlaceholder>
-            </p>
-            <div
-                class="deposit__copy"
-                @click="addTextToClipboard(cardNumberForDeposit)"
+        <div v-if="!isPaymentTime" class="deposit__input-wrapper">
+            <Input v-model="depositConfig.crypto_id" class="mb-small" dark />
+            <h3 class="deposit__sub-title">Amount*</h3>
+            <InputThumbnail
+                v-model="depositConfig.sum"
+                class="mb-small"
+                type="number"
+                valut="USDT"
+                :src="usdtFlag"
+                dark
+                >$</InputThumbnail
             >
-                <svg
-                    width="10"
-                    height="11"
-                    viewBox="0 0 6 7"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M1.58824 5.95C1.44706 5.95 1.32353 5.8975 1.21765 5.7925C1.11176 5.6875 1.05882 5.565 1.05882 5.425V0.525C1.05882 0.385 1.11176 0.2625 1.21765 0.1575C1.32353 0.0525 1.44706 0 1.58824 0H5.47059C5.61176 0 5.73529 0.0525 5.84118 0.1575C5.94706 0.2625 6 0.385 6 0.525V5.425C6 5.565 5.94706 5.6875 5.84118 5.7925C5.73529 5.8975 5.61176 5.95 5.47059 5.95H1.58824ZM1.58824 5.425H5.47059V0.525H1.58824V5.425ZM0.529412 7C0.388235 7 0.264706 6.9475 0.158824 6.8425C0.0529412 6.7375 0 6.615 0 6.475V1.19875H0.529412V6.475H4.71176V7H0.529412ZM1.58824 0.525V5.425V0.525Z"
-                        fill="#655C5C"
-                    />
-                </svg>
+            <div class="deposit__currency mb-small">
+                <p>Commission</p>
+                <p>${{ commission }}</p>
             </div>
         </div>
-        <p class="deposit__text">
-            Attention! send only USDT on the TRC-20 network to this address,
-            otherwise your money will be lost. If you send money through another
-            network, the transaction will burn on the blockchain
-        </p>
+        <div v-else>
+            <div class="deposit__wallet">
+                <label for="wallet" class="deposit__label">Trc-20</label>
+                <p type="text" name="wallet" class="deposit__input">
+                    <TextLoadPlaceholder :loading="isSettingsLoading">
+                        {{ cardNumberForDeposit }}
+                    </TextLoadPlaceholder>
+                </p>
+                <div
+                    class="deposit__copy"
+                    @click="addTextToClipboard(cardNumberForDeposit)"
+                >
+                    <svg
+                        width="10"
+                        height="11"
+                        viewBox="0 0 6 7"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M1.58824 5.95C1.44706 5.95 1.32353 5.8975 1.21765 5.7925C1.11176 5.6875 1.05882 5.565 1.05882 5.425V0.525C1.05882 0.385 1.11176 0.2625 1.21765 0.1575C1.32353 0.0525 1.44706 0 1.58824 0H5.47059C5.61176 0 5.73529 0.0525 5.84118 0.1575C5.94706 0.2625 6 0.385 6 0.525V5.425C6 5.565 5.94706 5.6875 5.84118 5.7925C5.73529 5.8975 5.61176 5.95 5.47059 5.95H1.58824ZM1.58824 5.425H5.47059V0.525H1.58824V5.425ZM0.529412 7C0.388235 7 0.264706 6.9475 0.158824 6.8425C0.0529412 6.7375 0 6.615 0 6.475V1.19875H0.529412V6.475H4.71176V7H0.529412ZM1.58824 0.525V5.425V0.525Z"
+                            fill="#655C5C"
+                        />
+                    </svg>
+                </div>
+            </div>
+            <p class="deposit__text">
+                Attention! send only USDT on the TRC-20 network to this address,
+                otherwise your money will be lost. If you send money through
+                another network, the transaction will burn on the blockchain
+            </p>
+        </div>
         <LoadSpinner v-if="isLoading || isUserLoading"></LoadSpinner>
         <RouterLink
             v-else-if="isUserError"
@@ -118,6 +124,12 @@ watch(isSuccess, (v) => (isToastShow.value = v));
         >
             <Button> <IconPlane class="mr-small" /> Register now</Button>
         </RouterLink>
+        <Button
+            v-else-if="!isPaymentTime"
+            :disabled="!isAvailableForSwap"
+            @click="isPaymentTime = true"
+            >Next step</Button
+        >
         <button
             v-else
             class="deposit__button mb-small"

@@ -6,6 +6,7 @@ import useAsyncQuery from "@composables/useAsyncQuery";
 import useUserLogin from "@composables/useUserLogin";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 import ErrorText from "@/components/ui/error-text.vue";
+import { useRouter } from "vue-router";
 
 const { loginUser } = useUserLogin();
 
@@ -16,6 +17,8 @@ const userConfig = reactive({
     country: "",
     city: "",
 });
+const router = useRouter();
+
 const user = computed(() => store.state.user);
 const { doAsyncQuery, errorResponse, isError } = useAsyncQuery(
     registerUser,
@@ -23,6 +26,7 @@ const { doAsyncQuery, errorResponse, isError } = useAsyncQuery(
         await loginUser(userConfig);
         store.dispatch("getUser");
         store.dispatch("fetchCurrencies");
+        router.push({ name: "home-page" });
     }
 );
 store.commit("hideLoginPopup");
