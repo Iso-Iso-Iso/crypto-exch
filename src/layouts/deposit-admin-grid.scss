@@ -81,7 +81,8 @@
         flex-basis: 21%;
     }
     &__accept,
-    &__decline {
+    &__decline,
+    &__freeze {
         width: 66px;
         height: 22px;
         display: flex;
@@ -96,6 +97,9 @@
     }
     &__decline {
         background: #662d29;
+    }
+    &__freeze {
+        background: rgb(72, 105, 179);
     }
     &__pending {
         background: rgba(201, 153, 32, 0.15);

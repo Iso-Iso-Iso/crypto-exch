@@ -32,6 +32,7 @@ const { type, status, date, sum } = toRefs(props);
             <div v-if="status == 0" class="order__pending">Pending</div>
             <div v-if="status == 1" class="order__completed">Completed</div>
             <div v-if="status == -1" class="order__canceled">Canceled</div>
+            <div v-if="status == 2" class="order__freeze">Freezed</div>
         </div>
     </div>
 </template>

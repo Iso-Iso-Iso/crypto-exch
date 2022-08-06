@@ -2,7 +2,7 @@
     <div class="order-wrapper">
         <div class="order">
             <div class="order__top">
-                <p class="order__name reciever">RECEIVER</p>
+                <p class="order__name reciever">TYPE</p>
                 <p class="order__name date">DATE</p>
                 <p class="order__name amount">AMOUNT</p>
                 <p class="order__name status">STATUS</p>

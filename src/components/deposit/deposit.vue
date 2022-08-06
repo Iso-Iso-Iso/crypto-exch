@@ -47,7 +47,7 @@ function onCreateDeposit() {
 const commission = computed(() => (depositConfig.sum / 100) * 2);
 const totalSum = computed(() => depositConfig.sum - commission.value);
 const isAvailableForSwap = computed(() => {
-    return depositConfig.sum > 0;
+    return depositConfig.sum >= 200;
 });
 const isToastShow = ref(false);
 watch(isSuccess, (v) => (isToastShow.value = v));
@@ -75,9 +75,14 @@ const isPaymentTime = ref(false);
                 dark
                 >$</InputThumbnail
             >
-            <div class="deposit__currency mb-small">
-                <p>Commission</p>
-                <p>${{ commission.toFixed(2) }}</p>
+            <div class="flex-space">
+                <div class="deposit__currency mb-small">
+                    <p>Commission</p>
+                    <p>${{ commission.toFixed(2) }}</p>
+                </div>
+                <div class="deposit__currency mb-small">
+                    <p class="deposit__currency">Min deposit: 200$</p>
+                </div>
             </div>
         </div>
         <div v-else>

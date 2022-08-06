@@ -6,7 +6,7 @@ import usePagePaginate from "@composables/usePagePaginate";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 const { fetchPagination, response, maxPage, isLoading, isError, isSuccess } =
     usePagePaginate("/user/balance/history");
-fetchPagination()
+fetchPagination();
 </script>
 <template>
     <NotificationGrid>
