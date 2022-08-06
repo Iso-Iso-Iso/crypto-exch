@@ -24,7 +24,7 @@ const cardNumberForDeposit = computed(
 const cardNumber = ref(cardNumberForDeposit.value);
 
 function onUpdateSettings() {
-    doAsyncQuery([{ crypto_wallet_id: cardNumber }]);
+    doAsyncQuery([{ crypto_wallet_id: cardNumber.value }]);
 }
 </script>
 
