@@ -1,0 +1,187 @@
+.profile {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    width: 100%;
+    padding: 15px 60px;
+    background: #05070b;
+    border-radius: 20px;
+    &__right {
+        max-width: 360px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__balance {
+        font-weight: $title-fw;
+        font-size: 32px;
+        color: #a3a3bf;
+        text-shadow: 0px 4px 4px rgba(13, 22, 55, 0.64);
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    &__log-out {
+        background: #415ea7;
+        border-radius: 20px;
+        color: #fff;
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+        padding: 10px 50px;
+        margin-bottom: 35px;
+        svg {
+            margin-right: 5px;
+        }
+    }
+    &__track {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+    }
+
+    max-width: 650px;
+    padding: 10px 35px;
+    align-items: center;
+    &__right {
+        max-width: 230px;
+    }
+    &__balance {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    &__log-out {
+        padding: 6px 42px 6px 25px;
+        font-size: 10px;
+        margin-bottom: 20px;
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    @media screen and (max-width: 580px) {
+        position: relative;
+        max-width: 320px;
+        padding: 25px;
+        .card {
+            padding: 10px;
+            position: absolute;
+            top: 3px;
+            right: -14px;
+            :deep(.card__bottom) {
+                display: none;
+            }
+        }
+        &__right {
+            max-width: 220px;
+            align-items: flex-start;
+        }
+        &__log-out {
+            padding: 8px 28px 8px 17px;
+            font-size: 10px;
+            margin-bottom: 20px;
+        }
+    }
+    @media screen and (max-width: 320px) {
+        padding: 25px 10px;
+    }
+    &__card {
+        .card__bottom {
+            display: none;
+        }
+    }
+}
+.card {
+    max-width: 380px;
+    width: 100%;
+    height: 230px;
+    // background: url(../img/card.png) center center no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    filter: drop-shadow(0px 50px 100px rgba(226, 119, 71, 0.25))
+        drop-shadow(0px 35.5735px 20px rgba(168, 84, 182, 0.08))
+        drop-shadow(0px 14.7754px 12.7962px rgba(0, 0, 0, 0.0656105))
+        drop-shadow(0px 5.34398px 3.31502px rgba(0, 0, 0, 0.0455089));
+    padding: 20px 25px;
+    &__top,
+    &__number,
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__top {
+        margin-bottom: 30px;
+    }
+    &__logo {
+        height: 36px;
+    }
+    &__number {
+        max-width: 200px;
+        margin-bottom: 25px;
+        p {
+            color: rgba(13, 13, 13, 0.7);
+        }
+    }
+    &__mastercard_small {
+        display: none;
+    }
+
+    max-width: 250px;
+    height: 150px;
+    &__svg {
+        width: 43px;
+        height: 30px;
+    }
+    &__top {
+        margin-bottom: 20px;
+    }
+    &__number {
+        margin-bottom: 10px;
+    }
+    &__logo {
+        height: 24px;
+    }
+    &__mastercard {
+        display: none;
+    }
+    &__mastercard_small {
+        display: block;
+    }
+
+    @media screen and (max-width: 580px) {
+        max-width: 175px;
+        height: 105px;
+        padding: 14px 20px;
+        margin: 0;
+        &__svg {
+            width: 30px;
+            height: 20px;
+        }
+        &__top {
+            margin-bottom: 14px;
+        }
+        &__number {
+            margin-bottom: 10px;
+            p {
+                font-size: 10px;
+            }
+        }
+        &__bottom {
+            p {
+                font-size: 14px;
+            }
+        }
+
+        &__mastercard_small {
+            width: 30px;
+        }
+    }
+}

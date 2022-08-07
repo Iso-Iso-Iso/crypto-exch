@@ -4,7 +4,6 @@ import usdtFlag from "@assets/usdt-flag.png";
 import { computed, reactive, ref, watch } from "vue";
 import { createDeposit } from "@services/user";
 import useAsyncQuery from "@composables/useAsyncQuery";
-import Input from "@components/forms/input.vue";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 import useUserProgressState from "@composables/useUserProgressState";
 import ErrorText from "@components/ui/error-text.vue";
@@ -62,7 +61,7 @@ const isPaymentTime = ref(false);
         <AlertToast v-model="isSettingsError" error>
             Wallet id is not loaded, try to refresh the page</AlertToast
         >
-        <h2 class="deposit__title text-center">Depoist</h2>
+        <h2 class="deposit__title text-center">Deposit</h2>
 
         <div v-if="!isPaymentTime" class="deposit__input-wrapper">
             <h3 class="deposit__sub-title">Amount*</h3>
@@ -119,13 +118,13 @@ const isPaymentTime = ref(false);
             </p>
         </div>
         <LoadSpinner v-if="isLoading || isUserLoading"></LoadSpinner>
-        <RouterLink
+        <div
             v-else-if="isUserError"
-            :to="{ name: 'user-registration' }"
-            class="w-100"
+            @click="store.commit('toggleRegisterForm')"
+            class="w-100 login-btn"
         >
             <Button> <IconPlane class="mr-small" /> Register now</Button>
-        </RouterLink>
+        </div>
         <Button
             v-else-if="!isPaymentTime"
             :disabled="!isAvailableForSwap"

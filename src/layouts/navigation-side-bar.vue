@@ -21,9 +21,13 @@ const isBurgerMenuActive = computed(
         :class="{ 'side-bar_active': isBurgerMenuActive }"
         class="side-bar"
     >
-        <div class="padding">
+        <RouterLink
+            :to="{ name: 'home-page' }"
+            class="padding"
+            style="display: block"
+        >
             <PrimaryLogo />
-        </div>
+        </RouterLink>
 
         <AdminLink :to="{ name: 'admin-home-page' }">
             <SideBarLink><IconHome /> Admin</SideBarLink>

@@ -119,13 +119,13 @@ watch(isSuccess, (v) => (isToastShow.value = v));
             >$</InputThumbnail
         >
         <LoadSpinner v-if="isCurrenciesLoading || isUserLoading || isSwaping" />
-        <RouterLink
+        <div
             v-else-if="isUserError"
-            :to="{ name: 'user-registration' }"
-            class="w-100"
+            class="w-100 login-btn"
+            @click="store.commit('toggleRegisterForm')"
         >
             <Button> <IconPlane class="mr-small" /> Register now </Button>
-        </RouterLink>
+        </div>
 
         <button
             v-else

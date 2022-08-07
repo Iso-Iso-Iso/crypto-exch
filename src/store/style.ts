@@ -1,12 +1,14 @@
 interface StylesState {
     isBurgerMenuActive: boolean;
     isLoginPopupActive: boolean;
+    isRegisterFormActive: boolean;
 }
 
 const styles = {
     state: () => ({
         isBurgerMenuActive: false,
         isLoginPopupActive: false,
+        isRegisterFormActive: false,
     }),
     mutations: {
         toggleBurgerMenu(state: StylesState) {
@@ -20,6 +22,12 @@ const styles = {
         },
         hideLoginPopup(state: StylesState) {
             state.isLoginPopupActive = false;
+        },
+        toggleRegisterForm(state: StylesState) {
+            state.isRegisterFormActive = !state.isRegisterFormActive;
+        },
+        hideRegisterForm(state: StylesState) {
+            state.isRegisterFormActive = false;
         },
     },
 };

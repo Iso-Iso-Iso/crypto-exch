@@ -1,4 +1,9 @@
 .registration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     margin: 0 auto;
     max-width: 620px;
     width: 100%;
@@ -103,6 +108,18 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+    }
+    &__close {
+        width: 100%;
+        cursor: pointer;
+        @include flex(flex-end);
+        svg {
+            width: 25px;
+            height: 25px;
+        }
+        path {
+            fill: white;
         }
     }
     @media screen and (max-width: 570px) {

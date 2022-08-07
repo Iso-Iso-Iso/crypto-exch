@@ -1,39 +1,44 @@
 <template>
-    <div class="order-wrapper">
-        <div class="order">
-            <div class="order__top">
-                <p class="order__name reciever">TYPE</p>
-                <p class="order__name date">DATE</p>
-                <p class="order__name amount">AMOUNT</p>
-                <p class="order__name status">STATUS</p>
-            </div>
-            <div class="order__bottom">
-                <slot></slot>
-                <!-- <div class="order__client">
-                    <div class="order__reciever reciever">Mohamad Benar</div>
-                    <div class="order__date date">Jun 22, 2022</div>
-                    <div class="order__amount amount">$15</div>
-                    <div class="order__status status">
-                        <div class="order__pending">Pending</div>
-                    </div>
-                </div>
-                <div class="order__client">
-                    <div class="order__reciever reciever">Mohamad Benar</div>
-                    <div class="order__date date">Jun 22, 2022</div>
-                    <div class="order__amount amount">$15</div>
-                    <div class="order__status status">
-                        <div class="order__completed">Completed</div>
-                    </div>
-                </div>
-                <div class="order__client">
-                    <div class="order__reciever reciever">Mohamad Benar</div>
-                    <div class="order__date date">Jun 22, 2022</div>
-                    <div class="order__amount amount">$15</div>
-                    <div class="order__status status">
-                        <div class="order__canceled">Canceled</div>
-                    </div>
-                </div> -->
-            </div>
+    <div class="payment-history-wrapper">
+        <div class="payment-history">
+            <h2 class="payment-history__title">Payment History</h2>
+            <p class="payment-history__sub-title">
+                <slot name="subtitle"></slot>
+            </p>
+            <slot></slot>
+            <!-- <div class="admin-pagination">
+        <a href=""
+          ><svg
+            width="7"
+            height="12"
+            viewBox="0 0 7 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.05977 11.78C6.18644 11.78 6.31311 11.7333 6.41311 11.6333C6.60644 11.44 6.60644 11.12 6.41311 10.9267L2.06644 6.58001C1.74644 6.26001 1.74644 5.74001 2.06644 5.42001L6.41311 1.07335C6.60644 0.880013 6.60644 0.560013 6.41311 0.36668C6.21977 0.173346 5.89977 0.173346 5.70644 0.36668L1.35977 4.71335C1.01977 5.05335 0.826439 5.51335 0.826439 6.00001C0.826439 6.48668 1.01311 6.94668 1.35977 7.28668L5.70644 11.6333C5.80644 11.7267 5.93311 11.78 6.05977 11.78Z"
+              fill="#F7F9FF"
+            />
+          </svg>
+        </a>
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href=""
+          ><svg
+            width="7"
+            height="12"
+            viewBox="0 0 7 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.940228 11.78C0.813561 11.78 0.686895 11.7333 0.586895 11.6333C0.393561 11.44 0.393561 11.12 0.586895 10.9267L4.93356 6.58001C5.25356 6.26001 5.25356 5.74001 4.93356 5.42001L0.586895 1.07335C0.393561 0.880013 0.393561 0.560013 0.586895 0.36668C0.780228 0.173346 1.10023 0.173346 1.29356 0.36668L5.64023 4.71335C5.98023 5.05335 6.17356 5.51335 6.17356 6.00001C6.17356 6.48668 5.98689 6.94668 5.64023 7.28668L1.29356 11.6333C1.19356 11.7267 1.06689 11.78 0.940228 11.78Z"
+              fill="#F7F9FF"
+            />
+          </svg>
+        </a>
+      </div> -->
         </div>
     </div>
 </template>

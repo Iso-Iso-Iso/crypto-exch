@@ -23,6 +23,10 @@ const userConfig = reactive({
     login: "",
     password: "",
 });
+function showRegisterForm() {
+    store.commit("hideLoginPopup");
+    store.commit("toggleRegisterForm");
+}
 </script>
 <template>
     <Transition name="popup">
@@ -178,9 +182,9 @@ const userConfig = reactive({
         </div> -->
             <div class="login__register-for-free">
                 <p>Don’t have an account yet?</p>
-                <RouterLink :to="{ name: 'user-registration' }" href=""
-                    >Register for free</RouterLink
-                >
+                <button class="login-btn" @click="showRegisterForm()">
+                    <p>Register for free</p>
+                </button>
             </div>
         </div>
     </Transition>

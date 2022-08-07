@@ -9,9 +9,9 @@ const DepositAdmin = () => import("@views/admin/tabs/deposit-admin.vue");
 const TransactionAdmin = () =>
     import("@views/admin/tabs/transaction-admin.vue");
 const UserNotification = () => import("@views/user-notification.vue");
-const UserRegistration = () => import("@views/user-registration.vue");
 const CurrenciesAdmin = () => import("@views/admin/tabs/currencies-admin.vue");
 const SettingsAdmin = () => import("@views/admin/tabs/settings-admin.vue");
+const UserProfile = () => import("@views/user-profile.vue");
 
 const routes: RouteRecordRaw[] = [
     { path: "/", component: HomePage, name: "home-page" },
@@ -45,11 +45,7 @@ const routes: RouteRecordRaw[] = [
         name: "user-notification",
         component: UserNotification,
     },
-    {
-        path: "/registration",
-        name: "user-registration",
-        component: UserRegistration,
-    },
+    { path: "/profile", name: "user-profile", component: UserProfile },
     { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
 ];
 

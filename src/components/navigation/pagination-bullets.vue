@@ -78,7 +78,7 @@ console.log(pageBullets.value);
     display: flex;
     justify-content: space-between;
     gap: 8px;
-
+    position: absolute;
     bottom: 15px;
     right: 100px;
     a {
@@ -88,24 +88,18 @@ console.log(pageBullets.value);
         justify-content: center;
         align-items: center;
         color: #f6f9ff;
-        opacity: 0.2;
-        border: 1px solid #f7f9ff;
+        background: #141535;
         border-radius: 4px;
         transition: 0.4s all ease;
         &:hover {
-            @extend %triggered-paginate-link;
+            background: #5359ea;
         }
-    }
-    .router-link-exact-active {
     }
     @media screen and (max-width: 720px) {
         right: 50px;
     }
     @media screen and (max-width: 420px) {
         right: 20px;
-    }
-    .active-paginate-bullet {
-        @extend %triggered-paginate-link;
     }
 }
 </style>

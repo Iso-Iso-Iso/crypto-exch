@@ -5,7 +5,7 @@ import PaginationBullets from "@components/navigation/pagination-bullets.vue";
 import usePagePaginate from "@composables/usePagePaginate";
 import LoadSpinner from "@components/ui/load-spinner.vue";
 const { fetchPagination, response, maxPage, isLoading, isError, isSuccess } =
-    usePagePaginate("/user/balance/history");
+    usePagePaginate("/user/balance/history", 10);
 fetchPagination();
 </script>
 <template>

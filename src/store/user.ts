@@ -31,6 +31,12 @@ const user = {
         setUser(state: UserState, payload: User) {
             state.data = payload;
         },
+        logOut(state: UserState) {
+            state.data = {};
+            state.isSuccess = false;
+            state.isLoading = false;
+            state.isError = true;
+        },
     },
 
     actions: {

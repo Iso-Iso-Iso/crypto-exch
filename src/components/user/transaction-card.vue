@@ -127,9 +127,13 @@ watch(isError, (v) => (isErrorToastShow.value = v));
         </div>
 
         <LoadSpinner v-if="isUserLoading || isCurrenciesLoading"></LoadSpinner>
-        <RouterLink v-else-if="isUserError" :to="{ name: 'user-registration' }">
+        <div
+            v-else-if="isUserError"
+            class="login-btn"
+            @click="store.commit('toggleRegisterForm')"
+        >
             <Button> <IconPlane class="mr-small" /> Register now </Button>
-        </RouterLink>
+        </div>
 
         <Button v-else :disabled="!isButtonDisabled" @click="onWithdraw()"
             ><IconPlane class="mr-small" /> Send</Button

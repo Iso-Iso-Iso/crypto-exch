@@ -4,6 +4,7 @@ import RightSidebar from "@layouts/right-sidebar.vue";
 import HeaderMobile from "@components/navigation/header-mobile.vue";
 import LoginPopup from "@layouts/login-popup.vue";
 import { useStore } from "vuex";
+import RegistrationForm from "./layouts/registration-form.vue";
 
 const store = useStore();
 
@@ -15,6 +16,7 @@ store.dispatch("fetchSettings");
 
 <template>
     <div id="app">
+        <RegistrationForm />
         <LoginPopup />
         <NavigationSideBar />
         <div class="flex-space">
