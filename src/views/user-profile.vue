@@ -49,7 +49,7 @@ watch(
     .payment-history {
         max-width: 650px;
         padding: 30px;
-        min-height: 350px;
+        min-height: 450px;
         margin-bottom: 30px;
     }
     .payment-history__name {
