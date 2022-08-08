@@ -25,6 +25,12 @@ async function onDecline(withdraw_id: number, index: number) {
     if (!isWithdrawSuccess.value) return;
     response.value.data.withraws[index].status = -1;
 }
+
+async function onFreeze(withdraw_id: number, index: number) {
+    await doUpdateWithdrawStatus([{ withdraw_id, status: 2 }]);
+    if (!isWithdrawSuccess.value) return;
+    response.value.data.deposits[index].status = 2;
+}
 </script>
 <template>
     <DepositAdminGrid>
@@ -38,6 +44,7 @@ async function onDecline(withdraw_id: number, index: number) {
                 :status="item.status"
                 @on-accept="onAccept(item.withdraw_id, index)"
                 @on-decline="onDecline(item.withdraw_id, index)"
+                @on-freeze="onFreeze(item.withdraw_id, index)"
             />
             <PaginationBullets
                 :max-page="maxPage"
