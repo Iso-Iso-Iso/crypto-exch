@@ -16,7 +16,6 @@ for (let i = +currentPage.value - 2; i < +currentPage.value + 3; i++) {
     if (i > (maxPage!.value as any)) continue;
     pageBullets.value.push(i);
 }
-console.log(pageBullets.value);
 </script>
 
 <template>

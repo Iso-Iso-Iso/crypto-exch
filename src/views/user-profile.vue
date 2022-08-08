@@ -7,15 +7,15 @@ import LoadSpinner from "@/components/ui/load-spinner.vue";
 import { useStore } from "vuex";
 import { computed, watch } from "vue";
 import { useRouter } from "vue-router";
+import PaginationBullets from "@/components/navigation/pagination-bullets.vue";
 
 const store = useStore();
 const user = computed(() => store.state.user);
 const router = useRouter();
 
-const { fetchPagination, response, isLoading, isSuccess } = usePagePaginate(
-    "/user/balance/history",
-    5
-);
+const { fetchPagination, response, isLoading, isSuccess, maxPage } =
+    usePagePaginate("/user/balance/history", 5);
+
 fetchPagination();
 watch(
     () => user.value.isError,
@@ -35,6 +35,10 @@ watch(
                     :type="item.type"
                     :status="item.status"
                     :date="item.created"
+                />
+                <PaginationBullets
+                    :max-page="maxPage"
+                    :page-name="'user-profile'"
                 />
             </div>
             <LoadSpinner v-else-if="isLoading"></LoadSpinner>

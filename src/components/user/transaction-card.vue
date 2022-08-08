@@ -45,8 +45,6 @@ const totalSum = computed(() => {
 });
 
 const isButtonDisabled = computed(() => {
-    console.log(withdrawConfig.bank_id);
-
     const isUserDataEnter =
         withdrawConfig.bank_id.length > 12 && totalSum.value > 0;
 
