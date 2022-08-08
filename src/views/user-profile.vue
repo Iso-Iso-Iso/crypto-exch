@@ -53,6 +53,7 @@ watch(
     .payment-history {
         max-width: 650px;
         padding: 30px;
+        padding-bottom: 55px;
         min-height: 450px;
         margin-bottom: 30px;
     }

@@ -78,8 +78,9 @@ for (let i = +currentPage.value - 2; i < +currentPage.value + 3; i++) {
     justify-content: space-between;
     gap: 8px;
     position: absolute;
-    bottom: 15px;
-    right: 100px;
+    left: 100%;
+    transform: translateX(calc(-100% - 30px));
+    bottom: 20px;
     a {
         width: 26px;
         height: 26px;
@@ -100,5 +101,8 @@ for (let i = +currentPage.value - 2; i < +currentPage.value + 3; i++) {
     @media screen and (max-width: 420px) {
         right: 20px;
     }
+}
+.active-paginate-bullet {
+    background: #5359ea !important;
 }
 </style>
