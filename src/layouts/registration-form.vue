@@ -14,7 +14,7 @@ const { loginUser } = useUserLogin();
 
 const store = useStore();
 const userConfig = reactive({
-    login: "",
+    email: "",
     password: "",
     country: "",
     city: "",
@@ -42,7 +42,7 @@ function sendForm() {
 }
 const isAvailableForRegistration = computed(() => {
     const isAvailableForRegistration =
-        userConfig.login.length >= 3 && userConfig.password.length >= 8;
+        userConfig.email.length >= 3 && userConfig.password.length >= 8;
     return isAvailableForRegistration;
 });
 </script>
@@ -75,7 +75,7 @@ const isAvailableForRegistration = computed(() => {
             >Login* (3 symbol+)</label
         >
         <input
-            v-model="userConfig.login"
+            v-model="userConfig.email"
             class="registration__input"
             type="text"
             name="username"

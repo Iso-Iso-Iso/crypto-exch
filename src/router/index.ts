@@ -12,6 +12,8 @@ const UserNotification = () => import("@views/user-notification.vue");
 const CurrenciesAdmin = () => import("@views/admin/tabs/currencies-admin.vue");
 const SettingsAdmin = () => import("@views/admin/tabs/settings-admin.vue");
 const UserProfile = () => import("@views/user-profile.vue");
+const SendMailForm = () => import("@views/login/email-popup.vue");
+const ResetPasswordFrom = () => import("@views/login/reset-password.vue");
 
 const routes: RouteRecordRaw[] = [
     { path: "/", component: HomePage, name: "home-page" },
@@ -39,6 +41,16 @@ const routes: RouteRecordRaw[] = [
                 component: SettingsAdmin,
             },
         ],
+    },
+    {
+        path: "/send-mail",
+        component: SendMailForm,
+        name: "reset/email-form",
+    },
+    {
+        path: "/reset-password/:id",
+        component: ResetPasswordFrom,
+        name: "reser/password",
     },
     {
         path: "/notification",

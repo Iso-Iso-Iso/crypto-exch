@@ -14,6 +14,8 @@ import AlertToast from "../ui/alert-toast.vue";
 import { useStore } from "vuex";
 import TextLoadPlaceholder from "../ui/text-load-placeholder.vue";
 
+const isUserVerified = computed(() => store.state.user.data.is_verified);
+
 const addTextToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     alert("Copied!");
@@ -125,6 +127,9 @@ const isPaymentTime = ref(false);
         >
             <Button> <IconPlane class="mr-small" /> Register now</Button>
         </div>
+        <ErrorText v-else-if="!isUserVerified"
+            >Verified your account for transaction</ErrorText
+        >
         <Button
             v-else-if="!isPaymentTime"
             :disabled="!isAvailableForSwap"

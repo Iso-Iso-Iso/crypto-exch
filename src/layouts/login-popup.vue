@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import { computed, reactive, ref } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import useHideLogin from "@composables/useHideLogin";
 import useUserLogin from "@composables/useUserLogin";
 import ErrorText from "@/components/ui/error-text.vue";
 import LoadSpinner from "@/components/ui/load-spinner.vue";
+import useUserProgressState from "@/composables/useUserProgressState";
+import { useRouter } from "vue-router";
 useHideLogin();
 const store = useStore();
 const onSuccessLogin = () => {
@@ -20,13 +22,17 @@ const { loginUser, isError, isLoading, isSuccess } = useUserLogin();
 const isShowPassword = ref(false);
 
 const userConfig = reactive({
-    login: "",
+    email: "",
     password: "",
 });
 function showRegisterForm() {
     store.commit("hideLoginPopup");
     store.commit("toggleRegisterForm");
 }
+const { isUserSuccess } = useUserProgressState();
+const router = useRouter();
+if (isUserSuccess.value) router.push("/");
+watch(isUserSuccess, () => router.push("/"));
 </script>
 <template>
     <Transition name="popup">
@@ -53,14 +59,14 @@ function showRegisterForm() {
             <h2 class="login__title">Login</h2>
             <label class="login__label" for="username">Username</label>
             <input
-                v-model="userConfig.login"
+                v-model="userConfig.email"
                 class="login__input"
                 type="text"
                 name="username"
                 placeholder="username"
             />
             <label class="login__label" for="pass">Password</label>
-            <div class="login__password mb-big">
+            <div class="login__password">
                 <input
                     v-model="userConfig.password"
                     class="login__input"
@@ -108,10 +114,12 @@ function showRegisterForm() {
                     </svg>
                 </div>
             </div>
+            <RouterLink :to="{ name: 'reset/email-form' }" class="login__forgot"
+                >Forgot Password?</RouterLink
+            >
             <ErrorText v-if="isError" class="mb-small"
                 >Username or password is incorrect</ErrorText
             >
-            <!-- <a href="" class="login__forgot">Forgot Password?</a> -->
 
             <LoadSpinner v-if="isLoading" class="mb-small"></LoadSpinner>
             <button

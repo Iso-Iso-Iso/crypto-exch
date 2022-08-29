@@ -28,3 +28,7 @@ export async function registerUser(
 ): AxiosQueryResponse<UserAuth> {
     return axios.post("/api/auth/register", ...params);
 }
+
+export async function sendMailForPasswordReset(params: AxiosParamsArray = []) {
+    return axios.post("/api/auth/request-password-reset", ...params);
+}

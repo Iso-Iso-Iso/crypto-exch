@@ -159,3 +159,21 @@ html {
 .w-100 {
     width: 100%;
 }
+
+.p-medium {
+    padding: 20px;
+    @media screen and(max-width:425px) {
+        padding: 10px;
+    }
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+.w-max {
+    width: max-content;
+}

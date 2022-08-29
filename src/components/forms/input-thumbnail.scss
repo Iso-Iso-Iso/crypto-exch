@@ -32,6 +32,14 @@
         margin-right: 5px;
     }
     &__currency {
+        cursor: pointer;
+        @include flex($flex-direction: column);
+        svg {
+            width: 10px !important;
+            height: 10px !important;
+        }
+    }
+    &__thumbnail {
         @include flex($flex-direction: column);
     }
     &__line {
@@ -46,6 +54,7 @@
         margin-bottom: 2px;
         position: relative;
         img {
+            border-radius: 999px;
             position: absolute;
             top: 0;
             left: 0;
@@ -53,7 +62,20 @@
             height: 100%;
         }
     }
-
+    &__drop-list {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background: $primary-color_light;
+        padding: 5px;
+        border-radius: 4px;
+        .input-thumbnail__currency {
+            margin-bottom: 5px;
+            &:hover {
+                background: gray;
+            }
+        }
+    }
     &__valut-name {
         color: $contrast-primary-color;
         font-size: 10px;

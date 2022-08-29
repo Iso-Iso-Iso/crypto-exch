@@ -14,6 +14,7 @@ import IconPlane from "../icons/icon-plane.vue";
 import Button from "../ui/button.vue";
 import AlertToast from "../ui/alert-toast.vue";
 // TODO! use composables
+const isUserVerified = computed(() => store.state.user.data.is_verified);
 
 const store = useStore();
 const isUserLoading = computed(() => store.state.user.isLoading);
@@ -126,7 +127,9 @@ watch(isSuccess, (v) => (isToastShow.value = v));
         >
             <Button> <IconPlane class="mr-small" /> Register now </Button>
         </div>
-
+        <ErrorText v-else-if="!isUserVerified"
+            >Verified your account for transaction</ErrorText
+        >
         <button
             v-else
             :disabled="!isAvailableForSwap"

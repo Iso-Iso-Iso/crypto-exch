@@ -3,17 +3,18 @@ import ContentCard from "@components/ui/content-card.vue";
 import PaymentCard from "@components/ui/payment-card.vue";
 import Input from "@components/forms/input.vue";
 import Select from "@components/forms/select.vue";
-import InputThumbnail from "@/components/forms/input-thumbnail.vue";
 import Button from "@components/ui/button.vue";
 import IconPlane from "@components/icons/icon-plane.vue";
 import { computed, reactive, ref, watch } from "vue";
 import ukrFlag from "@assets/ukr-flag.png";
 import { useStore } from "vuex";
 import LoadSpinner from "@components/ui/load-spinner.vue";
-import ErrorText from "@components/ui/error-text.vue";
 import useAsyncQuery from "@composables/useAsyncQuery";
 import { createWithdraw } from "@services/user";
 import AlertToast from "../ui/alert-toast.vue";
+import InputWithSelect from "../forms/input-with-select.vue";
+import ErrorText from "../ui/error-text.vue";
+import ruFlag from "@/assets/ru-flag.jpg";
 
 const store = useStore();
 const isUserLoading = computed(() => store.state.user.isLoading);
@@ -22,11 +23,13 @@ const isUserError = computed(() => store.state.user.isError);
 const currencies = computed(() => store.state.currencies.data);
 const isCurrenciesLoading = computed(() => store.state.currencies.isLoading);
 const isCurrenciesSuccess = computed(() => store.state.currencies.isSuccess);
+const isUserVerified = computed(() => store.state.user.data.is_verified);
 
 const withdrawConfig = reactive({
     bank_id: "",
     bank_name: "Monobank",
     sum: 0,
+    currency: "UAH",
 });
 
 const { doAsyncQuery, isSuccess, errorResponse, isError } =
@@ -39,7 +42,10 @@ function onWithdraw() {
 const totalSum = computed(() => {
     if (isCurrenciesSuccess.value)
         return (
-            withdrawConfig.sum * (currencies?.value?.currencies?.USD || 0) - 5
+            (withdrawConfig.sum /
+                currencies?.value?.currencies[withdrawConfig.currency]) *
+                (currencies?.value?.currencies?.USD || 0) -
+            5
         );
     return 0;
 });
@@ -106,8 +112,10 @@ watch(isError, (v) => (isErrorToastShow.value = v));
             </div>
             <div class="transaction-card__select-wrapper">
                 <p class="standart-tex mb-small">Sum</p>
-                <InputThumbnail
+                <InputWithSelect
                     v-model="withdrawConfig.sum"
+                    v-model:currentValut="withdrawConfig.currency"
+                    :options="{ UAH: ukrFlag, RUB: ruFlag }"
                     :src="ukrFlag"
                     valut="UAH"
                     type="number"
@@ -132,7 +140,9 @@ watch(isError, (v) => (isErrorToastShow.value = v));
         >
             <Button> <IconPlane class="mr-small" /> Register now </Button>
         </div>
-
+        <ErrorText v-else-if="!isUserVerified"
+            >Verified your account for transaction</ErrorText
+        >
         <Button v-else :disabled="!isButtonDisabled" @click="onWithdraw()"
             ><IconPlane class="mr-small" /> Send</Button
         >
