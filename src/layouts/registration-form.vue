@@ -28,6 +28,8 @@ const { doAsyncQuery, errorResponse, isError } = useAsyncQuery(
         await loginUser(userConfig);
         store.dispatch("getUser");
         store.dispatch("fetchCurrencies");
+        store.commit("hideRegisterForm");
+
         router.push({ name: "home-page" });
     }
 );
@@ -41,8 +43,7 @@ function sendForm() {
     doAsyncQuery([userConfig]);
 }
 const isAvailableForRegistration = computed(() => {
-    const isAvailableForRegistration =
-        userConfig.email.length >= 3 && userConfig.password.length >= 8;
+    const isAvailableForRegistration = userConfig.password.length >= 8;
     return isAvailableForRegistration;
 });
 </script>
@@ -71,9 +72,7 @@ const isAvailableForRegistration = computed(() => {
         <p v-if="isError" class="registration__error">
             {{ errorResponse?.response?.data?.error?.message }}
         </p>
-        <label class="registration__label" for="username"
-            >Login* (3 symbol+)</label
-        >
+        <label class="registration__label" for="username">Email</label>
         <input
             v-model="userConfig.email"
             class="registration__input"

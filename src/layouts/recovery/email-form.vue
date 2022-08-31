@@ -41,6 +41,7 @@ store.commit("hideLoginPopup");
         <SuccessText v-else-if="isSuccess"
             >Letter was send for mail. Check your mail.</SuccessText
         >
+
         <LoadSpinner v-else-if="isLoading" />
         <button v-else class="recovery-mail__button" @click="onMailSend()">
             Отправить

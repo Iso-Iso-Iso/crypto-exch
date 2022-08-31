@@ -64,13 +64,17 @@
     }
     &__drop-list {
         position: absolute;
+        transform: translateY(15px);
         top: 100%;
         width: 100%;
         background: $primary-color_light;
-        padding: 5px;
+        padding: 5px 3px;
         border-radius: 4px;
         .input-thumbnail__currency {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
             &:hover {
                 background: gray;
             }
