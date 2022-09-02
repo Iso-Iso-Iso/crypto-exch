@@ -27,3 +27,7 @@ export async function swapBalance(params: AxiosParamsArray = []) {
 export async function createWithdraw(params: AxiosParamsArray = []) {
     return $api.post("/user/balance/withdraw", ...params);
 }
+
+export async function confirmEmail(params: AxiosParamsArray = []) {
+    return $api.post("/user/verify-mail", ...params);
+}
