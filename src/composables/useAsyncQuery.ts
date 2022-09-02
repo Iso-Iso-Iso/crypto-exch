@@ -4,7 +4,8 @@ import { ref } from "vue";
 type AxiosParamsArray =
     | [any, AxiosRequestConfig<any>]
     | [AxiosRequestConfig<any>]
-    | [any];
+    | [any]
+    | any;
 
 export default function useAsyncQuery<T = any, E = any>(
     callback: (a?: AxiosParamsArray) => AxiosQueryResponse<T>,
@@ -16,7 +17,7 @@ export default function useAsyncQuery<T = any, E = any>(
     const response = ref<AxiosResponse<T> | undefined>();
     const errorResponse = ref<AxiosError<E> | undefined>();
 
-    async function doAsyncQuery(params?: AxiosParamsArray) {
+    async function doAsyncQuery<T>(params?: T | AxiosParamsArray) {
         try {
             isSuccess.value = false;
             isError.value = false;

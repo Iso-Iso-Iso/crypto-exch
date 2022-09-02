@@ -14,6 +14,8 @@ const SettingsAdmin = () => import("@views/admin/tabs/settings-admin.vue");
 const UserProfile = () => import("@views/user-profile.vue");
 const SendMailForm = () => import("@views/login/email-popup.vue");
 const ResetPasswordFrom = () => import("@views/login/reset-password.vue");
+// const EmailConfrim = () => import("@/views/login/email-confirm.vue");
+import EmailConfrim from "@/views/login/email-confirm.vue";
 
 const routes: RouteRecordRaw[] = [
     { path: "/", component: HomePage, name: "home-page" },
@@ -59,6 +61,10 @@ const routes: RouteRecordRaw[] = [
     },
     { path: "/profile", name: "user-profile", component: UserProfile },
     { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
+    {
+        path: "/email-confirm/:token",
+        component: EmailConfrim,
+    },
 ];
 
 const router = createRouter({

@@ -36,3 +36,7 @@ export async function sendMailForPasswordReset(params: AxiosParamsArray = []) {
 export async function resetPassword(params: AxiosParamsArray = []) {
     return axios.post("/api/auth/reset-password", ...params);
 }
+
+export async function confirmEmail(token: string) {
+    return axios.post("/api/email-confirm/" + token);
+}
