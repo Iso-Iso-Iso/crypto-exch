@@ -4,10 +4,11 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 const store = useStore();
-const user = computed(() => store.state.user.data);
+const user = computed(() => store.state.user);
 const router = useRouter();
 function showLogin() {
-    if (user.value) return router.push({ name: "user-profile" });
+    if (user.value.data && user.value.isSuccess)
+        return router.push({ name: "user-profile" });
     store.commit("toggleLoginPopup");
 }
 </script>

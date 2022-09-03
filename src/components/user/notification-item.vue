@@ -19,6 +19,7 @@ const props = defineProps({
         type: Number,
         required: true,
     },
+    currency: { type: String, default: "" },
 });
 
 const { type, status, date, sum } = toRefs(props);
@@ -77,17 +78,17 @@ onUnmounted(() => {
             </div>
         </div>
         <p class="payment-history__date">{{ date }}</p>
-        <p class="payment-history__prise">${{ sum }}</p>
+        <p class="payment-history__prise">{{ sum }} {{ currency }}</p>
         <div
             :class="{
-                completed: status == 1,
+                completed: status == 1 || type == 'swap',
                 canceled: status == -1,
                 frozen: status == 2,
                 pending: status == 0,
             }"
             class="payment-history__button"
         >
-            <span v-if="status == 1">Completed</span>
+            <span v-if="status == 1 || type == 'swap'">Completed</span>
             <span v-if="status == 2">Frozen</span>
             <span v-if="status == 0">Pending</span>
             <span v-if="status == -1">Canceled</span>

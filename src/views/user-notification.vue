@@ -18,6 +18,7 @@ fetchPagination();
                 :type="item.type"
                 :status="item.status"
                 :date="item.created"
+                :currency="item.currency"
             />
             <PaginationBullets
                 :max-page="maxPage"

@@ -7,6 +7,7 @@ const props = defineProps({
     status: { type: Number, required: true },
     sum: { type: Number, required: true },
     card: { type: String, required: true },
+    currency: { type: String, required: false, default: "" },
 });
 
 const { username, status, sum, card } = toRefs(props);
@@ -30,7 +31,7 @@ const { username, status, sum, card } = toRefs(props);
                 Freeze
             </button>
         </div>
-        <div class="deposit-admin__amount amount">{{ sum }}</div>
+        <div class="deposit-admin__amount amount">{{ sum }} {{ currency }}</div>
         <div v-if="status == 0" class="deposit-admin__status status">
             <div class="deposit-admin__pending">Pending</div>
         </div>

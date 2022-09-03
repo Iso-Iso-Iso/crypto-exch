@@ -29,7 +29,7 @@ async function onDecline(withdraw_id: number, index: number) {
 async function onFreeze(withdraw_id: number, index: number) {
     await doUpdateWithdrawStatus([{ withdraw_id, status: 2 }]);
     if (!isWithdrawSuccess.value) return;
-    response.value.data.deposits[index].status = 2;
+    response.value.data.withraws[index].status = 2;
 }
 </script>
 <template>
@@ -42,6 +42,7 @@ async function onFreeze(withdraw_id: number, index: number) {
                 :card="item.bank_id"
                 :sum="item.sum"
                 :status="item.status"
+                :currency="item.currency"
                 @on-accept="onAccept(item.withdraw_id, index)"
                 @on-decline="onDecline(item.withdraw_id, index)"
                 @on-freeze="onFreeze(item.withdraw_id, index)"

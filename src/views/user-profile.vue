@@ -12,7 +12,7 @@ import PaginationBullets from "@/components/navigation/pagination-bullets.vue";
 const store = useStore();
 const user = computed(() => store.state.user);
 const router = useRouter();
-
+if (user.value.isError) router.push("/");
 const { fetchPagination, response, isLoading, isSuccess, maxPage } =
     usePagePaginate("/user/balance/history", 5);
 
@@ -35,6 +35,7 @@ watch(
                     :type="item.type"
                     :status="item.status"
                     :date="item.created"
+                    :currency="item.currency"
                 />
                 <PaginationBullets
                     :max-page="maxPage"

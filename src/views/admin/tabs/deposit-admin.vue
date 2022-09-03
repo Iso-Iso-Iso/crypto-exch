@@ -42,6 +42,7 @@ async function onFreeze(deposit_id: number, index: number) {
                 :sum="item.sum"
                 :username="item.username"
                 :status="item.status"
+                :currency="item.currency"
                 @on-accept="onAccept(item.deposit_id, index)"
                 @on-decline="onDecline(item.deposit_id, index)"
                 @on-freeze="onFreeze(item.deposit_id, index)"
@@ -57,7 +58,13 @@ async function onFreeze(deposit_id: number, index: number) {
         <ErrorText v-else-if="isError"
             >Somthing went wrong. Try refresh the page</ErrorText
         >
-        <DepositItem :card="'wadawd'" :sum="22" :username="'22'" :status="0" />
+        <!-- <DepositItem
+            :card="'wadawd'"
+            :sum="22"
+            currency="RUB"
+            :username="'22'"
+            :status="0"
+        /> -->
         <template #title> Депозит </template>
     </DepositAdminGrid>
 </template>
