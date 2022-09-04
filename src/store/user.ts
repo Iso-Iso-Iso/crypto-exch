@@ -53,6 +53,17 @@ const user = {
                 context.commit("userFetchingError");
             }
         },
+        async silentGetUser(context: any) {
+            try {
+                if (!window.localStorage.getItem("access-token"))
+                    return (context.state.isError = true);
+                const user = await getUser();
+
+                context.commit("userFetchingComplete", user.data);
+            } catch {
+                context.commit("userFetchingError");
+            }
+        },
     },
 };
 

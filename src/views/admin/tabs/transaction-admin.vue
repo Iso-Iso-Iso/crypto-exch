@@ -54,7 +54,7 @@ async function onFreeze(withdraw_id: number, index: number) {
         </div>
         <LoadSpinner v-else-if="isLoading" />
         <ErrorText v-else-if="isError"
-            >Somthing went wrong. Try refresh the page</ErrorText
+            >Something went wrong. Try refresh the page</ErrorText
         >
         <template #title> Выводы </template>
     </DepositAdminGrid>

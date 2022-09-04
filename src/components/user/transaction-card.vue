@@ -32,8 +32,10 @@ const withdrawConfig = reactive({
     currency: "UAH",
 });
 
-const { doAsyncQuery, isSuccess, errorResponse, isError } =
-    useAsyncQuery(createWithdraw);
+const { doAsyncQuery, isSuccess, errorResponse, isError } = useAsyncQuery(
+    createWithdraw,
+    () => store.dispatch("silentGetUser")
+);
 
 function onWithdraw() {
     doAsyncQuery([withdrawConfig]);
@@ -56,7 +58,9 @@ const isButtonDisabled = computed(() => {
 
     return isUserDataEnter;
 });
-
+const errorMessage = computed(
+    () => errorResponse.value?.response?.data?.error?.message
+);
 const isToastShow = ref(false);
 watch(isSuccess, (v) => (isToastShow.value = v));
 
@@ -69,7 +73,7 @@ watch(isError, (v) => (isErrorToastShow.value = v));
             >Transaction was successfully added to order</AlertToast
         >
         <AlertToast v-model="isErrorToastShow" error
-            >Somthing went wrong! Check the correctness of filling in the data
+            >{{ errorMessage }}
         </AlertToast>
         <div class="flex-center">
             <PaymentCard class="transaction-card__payment-card" />

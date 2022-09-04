@@ -34,13 +34,12 @@ async function onFreeze(deposit_id: number, index: number) {
 <template>
     <DepositAdminGrid>
         <div v-if="isSuccess">
-            <!-- username="item.username" -->
             <DepositItem
                 v-for="(item, index) of response.data.deposits"
                 :key="index"
                 :card="item.crypto_id"
                 :sum="item.sum"
-                :username="item.username"
+                :username="item.email"
                 :status="item.status"
                 :currency="item.currency"
                 @on-accept="onAccept(item.deposit_id, index)"
@@ -56,15 +55,9 @@ async function onFreeze(deposit_id: number, index: number) {
 
         <LoadSpinner v-else-if="isLoading" />
         <ErrorText v-else-if="isError"
-            >Somthing went wrong. Try refresh the page</ErrorText
+            >Something went wrong. Try refresh the page</ErrorText
         >
-        <!-- <DepositItem
-            :card="'wadawd'"
-            :sum="22"
-            currency="RUB"
-            :username="'22'"
-            :status="0"
-        /> -->
+        <!-- <DepositItem :card="'wadawd'" :sum="22" :username="'22'" :status="0" /> -->
         <template #title> Депозит </template>
     </DepositAdminGrid>
 </template>

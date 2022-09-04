@@ -30,7 +30,7 @@ doAsyncQuery([{ token }]);
     <div class="recovery-mail">
         <AlertToast v-if="isSuccess"> Email was confirmed</AlertToast>
         <LoadSpinner v-if="isLoading" /><ErrorText v-else-if="isError"
-            >Somthing went wrong, please contact to support.</ErrorText
+            >Something went wrong, please contact to support.</ErrorText
         >
     </div>
 </template>

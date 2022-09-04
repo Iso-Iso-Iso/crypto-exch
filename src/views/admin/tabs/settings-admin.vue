@@ -31,7 +31,7 @@ function onUpdateSettings() {
 <template>
     <div class="card">
         <AlertToast v-model="isSuccess"> Data succesfully updated!</AlertToast>
-        <AlertToast v-model="isError" error>Somthing went wrong!</AlertToast>
+        <AlertToast v-model="isError" error>Something went wrong!</AlertToast>
         <ContentCard>
             <LoadSpinner v-if="isSettingsLoading"></LoadSpinner>
             <div v-if="isSettingsSuccess">
