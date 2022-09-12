@@ -5,7 +5,7 @@ import IconLogo from "@components/icons/icon-logo.vue";
 <template>
     <div class="logo">
         <IconLogo />
-        WPayme
+        Cosmpayeer
     </div>
 </template>
 <style lang="scss" src="./primary-logo.scss" scoped></style>

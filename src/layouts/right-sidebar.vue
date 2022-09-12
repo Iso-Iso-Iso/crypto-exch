@@ -20,7 +20,7 @@ import NotificationCard from "@components/user/notification-card.vue";
                 </div>
                 <div href="" class="right-sidebar__wpayme">
                     <img src="@assets/wpayme-card.png" alt="" />
-                    <h2 class="right-sidebar__title">WPayme Card</h2>
+                    <h2 class="right-sidebar__title">Cosmpayeer Card</h2>
                 </div>
             </div>
         </div>
